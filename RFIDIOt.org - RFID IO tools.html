@@ -1,0 +1,2443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0023)http://www.rfidiot.org/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>RFIDIOt.org - RFID IO tools</title>
+
+  
+
+  
+  <style></style></head><body>
+<h1 style="text-align: center;"><img style="width: 104px; height: 122px;" alt="rfidiot qr code" src="./RFIDIOt.org - RFID IO tools_files/rfidiot-qr.png"></h1>
+
+<h2>News</h2>October 2012: Migrated source code to <a href="https://github.com/AdamLaurie/RFIDIOt" target="_blank">https://github.com/AdamLaurie/RFIDIOt</a>.
+I realised one of the reasons I haven't been doing many updates is
+because it's always such a faff getting a new tarball together,
+updating the webpage etc., etc. Now, should you be vaguely interested,
+you can simply watch the project on github and get notified whenever a
+change is committed... Even better, if you have updates you want to
+contribute, just fork and create a merge request... (The first of which
+was Nick von Dadelszen's Android support package). Sweet!<br>
+<br>
+I will follow my usual practice of 'commit early, commit often', so
+whenever I'm working on something, expect daily updates... Speaking of
+which, I finally got around to bringing libNFC support up to date, so
+it now works with libnfc 1.6.0-rc1.<br>
+<br>
+September 2011: Added <a href="http://ossmann.blogspot.com/2011/02/throwing-star-lan-tap.html" target="_blank">Throwing Star LAN Tap</a> to shop. Another cool Michael Ossmann project!<br><br>
+March 2011: Added <a href="http://ubertooth.sourceforge.net/" target="_blank">ubertooth-one</a> to shop. This is an open source
+2.4 GHz wireless development platform suitable for
+Bluetooth experimentation, designed by <a href="http://www.blogger.com/profile/12869105044455059297" target="_blank">Michael Ossmann</a>. This is very cool... It brings
+hardware that is normally in the realms of thousands of pounds down
+to under 100! Sweet! You can build it yourself from the plans on
+his <a href="http://ubertooth.sourceforge.net/hardware/build/" target="_blank">site</a>, or order it <a href="http://www.rfidiot.org/#Hardware">ready built</a>.
+<span style="font-style: italic; font-weight: bold;">Update - 13th June
+2011 - The first batch from Mike has shipped! I hope to receive them
+this week and will get them straight out to those that have already
+placed orders.
+</span><br>
+
+<br>
+
+December 2009 : Beta release <a href="http://www.rfidiot.org/#Where">1.0b-beta</a>
+integrates new version of libnfc wrapper (pynfc ver 0.2), which works
+with the latest <a href="http://code.google.com/p/libnfc/source/checkout">libnfc SVN repo</a>
+(r245).<br>
+
+<br>
+
+November 2009: Release 1.0a &nbsp;- Started integrating
+Nick von Dadelszen's libnfc wrapper so we can support the new
+generation of usb stick readers which are practically given away with
+digital cash products such as <a href="http://www.snapper.co.nz/index.html" target="_blank">Snapper</a>.
+I've also done a lot of tidying up of the Mifare key handling code (the
+KeyA and KeyB stuff was probably some of the earliest code I wrote on
+this project, and was pretty broken!), as I'm starting to see a lot of
+live security issues with Mifare cards and their use in applications
+such as hotel keys etc., so I've added copy/clone functionality to
+readmifaresimple.py (note that it's not capable of creating a true
+clone as we can't set the UID, but we can copy all data blocks and set
+keys). <br>
+
+<br>
+
+February 2009: Finally got around to writing some more detailed <a href="http://www.rfidiot.org/documentation.html">documentation</a>,
+and also got NXP PN532 chips to run in emulator mode. Documentation to
+do this was released by NXP under NDA, but they have now given me
+permission to publish code based on that documentation, so I'm able to
+release two new tools:<br>
+
+<br>
+
+&nbsp; pn532emulate.py - sets up the emulator and processes one command.<br>
+
+<br>
+
+&nbsp;
+pn532mitm.py - 'pn532 man-in-the-middle', which will drive two readers:
+one as an emulator and one as a reader, and will log all traffic that
+flows&nbsp;between them. Additionally, you can seperate the reader and
+emulator onto two different machines, and relay the traffic via TCP.<br>
+
+<br>
+
+I've also added a tool for reading HID ProxCard IDs.<br>
+
+<br>
+
+January 2009: 0.1w released - various fixes to mrpkey.py and new
+jcoptool.py<br>
+
+<br>
+
+January 2009: RANDOM_UID mode available on JCOP cards.
+These cards will present a random UID instead of a fixed one, as per
+ICAO 9303 requirements for Machine readable Travel Documents. See <a href="http://www.rfidiot.org/index.html#Hardware">Hardware</a> section for
+more details.<br>
+
+<br>
+
+January 2009: version 0.1v released with source of JAVA applet for JCOP
+card.<br>
+
+<br>
+
+November 2008: version 0.1u released with support for JCOP Mifare
+emulation. Also, <a href="http://www.iaik.tugraz.at/content/research/rfid/tag_emulators/" target="_blank">IAIK DemoTag 13.56MHz emulators</a>
+now available.<br>
+
+<br>
+
+October 2008: version 0.1t released with support for JCOP Machine
+Readable Travel Documents (<a target="_blank" href="http://freeworld.thc.org/thc-epassport/">vonJeek
+emulator</a> and <a href="http://jmrtd.org/" target="_blank">JMRTD - A
+Free Implementation of Machine
+Readable Travel Documents</a>).<br>
+
+<br>
+
+April 2008: Windows distribution of RFIDIOt now available! See <a href="http://www.rfidiot.org/#Where">download</a> section for where to get it.<br>
+
+<br>
+
+February 2008 - 'ChAP.py' released... first cut of EMV Chip And PIN
+credit card reading script (currently for PC/SC readers only). <br>
+
+13th April 2008 - version 0.1b is out. Run 'ChAP.py -h' for features.
+Download
+it <a href="http://rfidiot.org/ChAP-0.1b.tgz">here.</a><br>
+
+<br>
+
+An all-in-one reader/writer is now available: the LAHF is a Low And
+High
+Frequency device incorporating both the ACG LF Multitag and the ACG HF
+Multi-ISO into a single unit. Each reader presents it's own virtual
+serial interface to the O/S via a single USB connection, so can still
+be
+independantly addressed by software. See the <a href="http://www.rfidiot.org/#Hardware">hardware</a>
+section for more details. <br>
+
+<br>
+
+Also, following a re-design, the USB version of the ACG HF Multi-ISO is
+now the same price as the serial version.
+<h2>Contents</h2>
+
+<br>
+
+<a href="http://www.rfidiot.org/#What_is_RFIDIOt">What is RFIDIOt?</a><br>
+
+<a href="http://www.rfidiot.org/#What_does_it_do">What does it do?</a><br>
+
+<a href="http://www.rfidiot.org/#Hardware">Hardware</a><br>
+
+<a href="http://www.rfidiot.org/#What_can_it_read">What can it read or write?</a><br>
+
+<a href="http://www.rfidiot.org/#What_standards">What standards does it support?</a><br>
+
+<a href="http://www.rfidiot.org/#Where">Download</a><br>
+
+<a href="http://www.rfidiot.org/documentation.html">Documentation</a><br>
+
+<a href="http://www.rfidiot.org/#licencing_terms">Licensing</a><br>
+
+<a href="http://www.rfidiot.org/#contribute">Contribute</a><br>
+
+<a href="http://www.rfidiot.org/#Tag_Gallery">Tag Gallery</a><br>
+
+<a href="http://www.rfidiot.org/#UKPassport">e-Passports</a><br>
+
+<a href="http://www.rfidiot.org/#certificates">Passport Certificates</a><br>
+
+<a href="http://www.rfidiot.org/#Passport_profiling">Passport Profiling</a><br>
+
+<a href="http://www.rfidiot.org/#Technical_Note">Technical Notes</a><br>
+
+<a href="http://www.rfidiot.org/#RFID_Blocking">RFID Blocking</a><br>
+
+<a href="http://www.rfidiot.org/#news">In The News</a><br>
+
+<a href="http://www.rfidiot.org/#Who">Who am I?</a>
+<h2 style="text-align: center;"><a name="What_is_RFIDIOt"></a>What is
+RFIDIOt?</h2>
+
+RFIDIOt is an open source python library for exploring RFID devices.
+It's called "RFIDIOt" for two reasons: <br>
+
+<br>
+
+<ol>
+
+  <li>I like puns. This one stands for "RFID IO tools"<br>
+  </li>
+  <li>Since I haven't done any serious programming for a long
+time, I
+felt like an idiot having to learn a whole new language and the code
+probably looks like it's written by an idiot. However, python rocks, so
+it was worth it!</li>
+</ol>
+
+<h2 style="text-align: center;"><a name="What_does_it_do"></a>What does
+it do?</h2>
+
+It currently drives a range of RFID readers made by <a href="http://www.acg.de/">ACG,</a> called the <a href="http://www.acg.de/synformation/servlet/PageServlet/corporate/RFIDProducts/Start?show=RFID_Basics">HF
+Dual ISO</a> and <a href="http://www.acg-id.com/index.php?id=98">HF
+Multi ISO</a>,
+which are both 13.56MHz devices,
+and the&nbsp;<a href="http://www.acg-id.com/index.php?id=97">LF
+MultiTag</a> which is 125/134.2kHz. Frosch Hitag reader/writers
+are also now supported. There's no reason it couldn't
+work with others, these are
+just the first
+ones I got my hands on, and since they present themselves to the O/S as
+standard serial devices without having to install any&nbsp;drivers,
+it
+made interfacing&nbsp;very simple (but see the <a href="http://www.rfidiot.org/#Technical_Note">Technical Note</a> section
+below as I've had some issues recently). I have written some example
+programs to read/write tags and have started on the library routines to
+handle the data structures of specific tags like&nbsp;<a href="http://mifare.net/">MIFARE®</a>. It is
+far from complete but I thought I'd follow the "publish early, publish
+often" philosophy on this one...<br>
+
+<br>
+
+<a href="http://pcsclite.alioth.debian.org/">PC/SC
+(MUSCLE)</a> devices, such as the <a href="http://omnikey.aaitg.com/index.php?id=products&amp;tx_okprod_pi1%5Bproduct%5D=41&amp;tx_okprod_pi1%5BL%5D=0&amp;cHash=6ed9709359">Omnikey
+CardMan</a> are also supported. I am curently testing with a
+CardMan 5321.<br>
+
+<br>
+
+<h2 style="text-align: center;"><a name="Hardware"></a>Hardware</h2>
+
+<br>
+
+I get lots of emails asking where to buy readers/writers, so if you are
+looking
+for hardware, RFIDIOt custom built kit and other items I use for
+testing can be
+purchased here. These are RFIDIOt compatible read/write devices (where
+appropriate), and come with power cables and a full year's
+no- quibble 'fix or replace' warranty. <br>
+
+<br>
+
+All prices exclude VAT and delivery which will be calculated at
+checkout. If you are outside the UK, please add £8 per item
+using the 'Overseas Postage' item at the bottom of the table. All
+orders
+will be sent via UK
+Post Office tracked services.<br>
+
+<br>
+	<table style="text-align: left; width: 1048px; height: 112px;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+    <tr style="font-weight: bold;">
+      <td rowspan="1" colspan="1"> Standard
+Reader / Writers</td>
+      <td rowspan="1" colspan="6"><a href="http://www.rfidiot.org/index.html#" onclick="javascript:window.open(&#39;https://www.paypal.com/uk/cgi-bin/webscr?cmd=xpt/cps/popup/OLCWhatIsPayPal-outside&#39;,&#39;olcwhatispaypal&#39;,&#39;toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350&#39;);"><img src="./RFIDIOt.org - RFID IO tools_files/horizontal_solution_PP.gif" alt="Solution Graphics" border="0"></a></td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold;">Type</td>
+      <td style="font-weight: bold;">Frequency</td>
+      <td style="font-weight: bold;">Interface</td>
+      <td style="font-weight: bold;">Supported
+Tag Types</td>
+      <td style="font-weight: bold;">Image</td>
+      <td style="font-weight: bold;">Price</td>
+      <td style="font-weight: bold;">Purchase</td>
+    </tr>
+    <tr>
+      <td>ACG HF Serial</td>
+      <td>13.56 MHz</td>
+      <td>Serial RS232</td>
+      <td>ISO 14443 A/B, ISO 15693, ISO 18000-3, NFC, I-CODE</td>
+      <td><a href="http://www.rfidiot.org/acg-serial.jpg"><img style="border: 0px solid ; width: 258px; height: 172px;" alt="ACG Serial" src="./RFIDIOt.org - RFID IO tools_files/acg-serial-thumb.jpg"></a><br>
+      </td>
+      <td>£235<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="ACG Serial 13.56MHz Multi-ISO" type="hidden"><input name="amount" value="235.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>ACG HF USB</td>
+      <td>13.56 MHz</td>
+      <td>USB</td>
+      <td>ISO 14443 A/B, ISO 15693, ISO 18000-3, NFC, I-CODE<br>
+      </td>
+      <td><span style="text-decoration: underline;"><a href="http://www.rfidiot.org/acg-hf-usb.png"><img style="border: 0px solid ; width: 232px; height: 147px;" alt="ACG HF USB" src="./RFIDIOt.org - RFID IO tools_files/acg-hf-usb-thumb.png"></a></span><br>
+      </td>
+      <td>£235<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="ACG USB 13.56MHz Multi-ISO" type="hidden"><input name="amount" value="235.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>ACG LAHF USB</td>
+      <td>125/134.2 kHz<br>
+      <br>
+&amp;<br>
+      <br>
+13.56 MHz</td>
+      <td>USB</td>
+      <td>EM4x02<br>
+EM4x50<br>
+EM4x05 (ISO 11784/5 FDX-B)<br>
+Hitag 1 / 2 / S<br>
+Q5<br>
+TI 64 bit R/O &amp; R/W<br>
+TI 1088 bit Multipage<br>
+      <br>
+ISO 14443 A/B, ISO 15693, ISO 18000-3, NFC, I-CODE</td>
+      <td><span style="text-decoration: underline;"><a href="http://www.rfidiot.org/acg-hf-usb.png"><img style="border: 0px solid ; width: 232px; height: 147px;" alt="ACG HF USB" src="./RFIDIOt.org - RFID IO tools_files/acg-hf-usb-thumb.png"></a></span><br>
+      </td>
+      <td>£415<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="ACG USB LAHF" type="hidden"><input name="amount" value="415.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>OmniKey<br>
+Cardman 5321</td>
+      <td>13.56 MHz</td>
+      <td>USB PC/SC</td>
+      <td>ISO 14443 A/B<br>
+ISO 15693<br>
+HID iCLASS<br>
++ ISO 7816 Smartcard</td>
+      <td><a href="./RFIDIOt.org - RFID IO tools_files/cm5321.jpg"><img style="border: 0px solid ; width: 193px; height: 164px;" alt="Omnikey Cardman 5321" src="./RFIDIOt.org - RFID IO tools_files/cm5321.jpg"></a></td>
+      <td>£85<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Cardman 5321" type="hidden"><input name="amount" value="85.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.iaik.tugraz.at/content/research/rfid/tag_emulators/" target="_blank">IAIK DemoTag</a></td>
+      <td>13.56 MHz</td>
+      <td>Serial RS232<br>
+JTAG<br>
+ISP</td>
+      <td>ISO 15693<br>
+ISO 18000-3<br>
+NFC<br>
+ISO 14443A</td>
+      <td><img style="width: 400px; height: 146px;" alt="IAIK DemoTag" src="./RFIDIOt.org - RFID IO tools_files/hf_demotag.png"></td>
+      <td><br>
+      </td>
+      <td><a href="https://jce.iaik.tugraz.at/crm/productList.php?Filter=22&amp;Show=22&amp;Disp=1" target="_blank">Purchase direct from IAIK</a><br>
+      </td>
+    </tr>
+    <tr>
+      <td>ACG LF Serial</td>
+      <td>125 / 134.2 kHz</td>
+      <td>Serial RS232</td>
+      <td>EM4x02<br>
+EM4x50<br>
+EM4x05 (ISO 11784/5 FDX-B)<br>
+Hitag 1 / 2 / S<br>
+Q5<br>
+TI 64 bit R/O &amp; R/W<br>
+TI 1088 bit Multipage</td>
+      <td><a href="http://www.rfidiot.org/frosch-hitag.png"><img style="border: 0px solid ; width: 258px; height: 282px;" alt="ACG Serial LF" src="./RFIDIOt.org - RFID IO tools_files/frosch-hitag-thumb.png"></a></td>
+      <td>£140<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="ACG LF RS232" type="hidden"><input name="amount" value="140.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>ACG LF USB</td>
+      <td>125 / 134.2 kHz</td>
+      <td>USB</td>
+      <td>EM4x02<br>
+EM4x50<br>
+EM4x05 (ISO 11784/5 FDX-B)<br>
+Hitag 1 / 2 / S<br>
+Q5<br>
+TI 64 bit R/O &amp; R/W<br>
+TI 1088 bit Multipage</td>
+      <td><a href="http://www.rfidiot.org/acg-lf-usb.jpg"><img style="border: 0px solid ; width: 258px; height: 225px;" alt="ACG LF USB" src="./RFIDIOt.org - RFID IO tools_files/acg-lf-usb-thumb.png"></a></td>
+      <td>£150 + VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="ACG LF USB" type="hidden"><input name="amount" value="150.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>OmniKey<br>
+Cardman 5325 PROX<br>
+(READ ONLY)</td>
+      <td>125 kHz</td>
+      <td>USB PC/SC</td>
+      <td>HID Prox<br>
+&nbsp;+ ISO 7816 Smartcard<br>
+      </td>
+      <td><a href="./RFIDIOt.org - RFID IO tools_files/cm5321.jpg"><img style="border: 0px solid ; width: 193px; height: 164px;" alt="Omnikey Cardman 5325" src="./RFIDIOt.org - RFID IO tools_files/cm5321.jpg"></a></td>
+      <td>£60<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Cardman 5325 Prox" type="hidden"><input name="amount" value="60.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>Frosch Hitag Serial</td>
+      <td>125 kHz</td>
+      <td>Serial RS232</td>
+      <td>Hitag 1 / 2 / S</td>
+      <td><a href="http://www.rfidiot.org/frosch-hitag.png"><img style="border: 0px solid ; width: 258px; height: 282px;" alt="Frosch Hitag" src="./RFIDIOt.org - RFID IO tools_files/frosch-hitag-thumb.png"></a></td>
+      <td>£140 + VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Frosch Hitag Serial" type="hidden"><input name="amount" value="140.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>Frosch Hitag USB</td>
+      <td>125 kHz</td>
+      <td>USB</td>
+      <td>Hitag 1 / 2 / S<br>
+      </td>
+      <td><a href="http://www.rfidiot.org/acg-lf-usb.jpg"><img style="border: 0px solid ; width: 258px; height: 225px;" alt="Frosch USB" src="./RFIDIOt.org - RFID IO tools_files/acg-lf-usb-thumb.png"></a></td>
+      <td>£150 + VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Frosch Hitag USB" type="hidden"><input name="amount" value="150.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td>Keyboard Wedge Verification LF Reader <br>
+(READ ONLY)</td>
+      <td>125 kHz</td>
+      <td>USB</td>
+      <td>Trovan 'Unique' / EM4x02</td>
+      <td><img style="width: 152px; height: 134px;" alt="Unique USB keyboard wedge" src="./RFIDIOt.org - RFID IO tools_files/unique-usb.jpg"></td>
+      <td>£45<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Unique Keyboard Wedge" type="hidden"><input name="amount" value="45.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>Re-Writeable Q5 LF TAG blank<br>
+      <br>
+      </td>
+      <td>125 / 134.2 kHz</td>
+      <td>n/a</td>
+      <td>Trovan 'Unique' / ISO FDX-B / HID Prox / other</td>
+      <td><img style="width: 172px; height: 103px;" alt="Q5 TAG" src="./RFIDIOt.org - RFID IO tools_files/Clamshell.jpg"><br>
+      </td>
+      <td>£5<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Q5 TAG" type="hidden"><input name="amount" value="5.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>Re-Writeable T55x7 LF TAG blank<br>
+      <br>
+      </td>
+      <td>125 / 134.2 kHz</td>
+      <td>n/a</td>
+      <td>Trovan 'Unique' / ISO FDX-B / HID Prox / other</td>
+      <td><img style="width: 172px; height: 103px;" alt="Q5 TAG" src="./RFIDIOt.org - RFID IO tools_files/card.jpg"><br>
+      </td>
+      <td>£5<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="T55x7 TAG" type="hidden"><input name="amount" value="5.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>NXP JCOP31 36K<br>
+Smartcard<br>
+      </td>
+      <td>13.56 MHz</td>
+      <td>NFC SmartCard</td>
+      <td>ISO 7816 / Global Platform<br>
+Mifare<br>
+      </td><td><img style="width: 231px; height: 151px;" alt="JAVACARD" src="./RFIDIOt.org - RFID IO tools_files/javacard.gif"><br>
+      </td>
+      <td>£8<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="JCOP Card - 36K" type="hidden"><input name="amount" value="8.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>NXP JCOP31 36K RANDOM_UID<br>
+Smartcard<br>
+      </td>
+      <td>13.56 MHz</td>
+      <td>NFC SmartCard</td>
+      <td>ISO 7816 / Global Platform<br>
+Mifare<br>
+      </td><td><img style="width: 231px; height: 151px;" alt="JAVACARD" src="./RFIDIOt.org - RFID IO tools_files/javacard.gif"><br>
+      </td>
+      <td>£12<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="JCOP Card - 36K RANDOM_UID" type="hidden"><input name="amount" value="12.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>NXP JCOP J3A081 80K<br>
+Smartcard<br>
+      </td>
+      <td>13.56 MHz</td>
+      <td>NFC SmartCard</td>
+      <td>ISO 7816 / Global Platform<br>
+Mifare<br>
+      <a href="http://jmrtd.org/" target="_blank">JMRTD</a><br>
+      <a href="http://freeworld.thc.org/thc-epassport/" target="_blank">vonJeek</a></td>
+      <td><img style="width: 231px; height: 151px;" alt="JAVACARD" src="./RFIDIOt.org - RFID IO tools_files/javacard.gif"><br>
+      </td>
+      <td>£16<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="JCOP Card - 80K" type="hidden"><input name="amount" value="16.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td>NXP JCOP J3A081 80K RANDOM_UID<br>
+Smartcard<br>
+      </td>
+      <td>13.56 MHz</td>
+      <td>NFC SmartCard</td>
+      <td>ISO 7816 / Global Platform<br>
+Mifare<br>
+      <a href="http://jmrtd.org/" target="_blank">JMRTD</a><br>
+      <a href="http://freeworld.thc.org/thc-epassport/" target="_blank">vonJeek</a></td>
+      <td><img style="width: 231px; height: 151px;" alt="JAVACARD" src="./RFIDIOt.org - RFID IO tools_files/javacard.gif"><br>
+      </td>
+      <td>£26<br>
++ VAT</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="JCOP Card - 80K RANDOM_UID" type="hidden"><input name="amount" value="26.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td><a target="_blank" href="https://github.com/greatscottgadgets/yardstick/wiki/YARD-Stick-One">YARD Stick One</a><br>
+      </td>
+      <td>281 - 962 MHz<br>
+      </td>
+      <td>USB<br>
+RF RX/TX<br>
+GoodFET<br>
+GPIO<br>
+      </td>
+      <td><br>
+n/a<br>
+      </td>
+      <td><img style="width: 480px; height: 157px;" alt="yardstick-one" src="./RFIDIOt.org - RFID IO tools_files/ys1.jpeg"><br>
+      </td>
+      <!--td>£65 + VAT<bri-->
+      <td>Out of Stock!<br>
+      </td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Yardstick-One" type="hidden"><input name="amount" value="65.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden">
+       <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td><a target="_blank" href="http://ubertooth.sourceforge.net/">Ubertooth One</a><br>
+      </td>
+      <td>2.4 GHz<br>
+      </td>
+      <td>USB<br>
+RF RX/TX<br>
+JTAG<br>
+      </td>
+      <td><br>
+n/a<br>
+      </td>
+      <td><img style="width: 480px; height: 360px;" alt="ubertooth-one" src="./RFIDIOt.org - RFID IO tools_files/ubertooth-one.jpeg"><br>
+      </td>
+      <!--td>£80 + VAT<br-->
+      <td>Out of Stock!<br>
+      </td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Ubertooth-One" type="hidden"><input name="amount" value="80.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden">
+       <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+    <tr>
+      <td><a target="_blank" href="http://ossmann.blogspot.com/2011/02/throwing-star-lan-tap.html">Throwing Star LAN Tap Kit</a><br>
+      </td>
+      <td>Ethernet<br>
+      </td>
+      <td>RJ45<br>
+      </td>
+      <td><br>
+n/a<br>
+      </td>
+      <td><img style="width: 480px; height: 360px;" alt="lantap" src="./RFIDIOt.org - RFID IO tools_files/lantap.jpeg"><br>
+      </td>
+      <!--td>£10 + VAT<br-->
+      <td>Out of stock!<br>
+      </td>
+      <td>
+      <!--form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="https://www.paypal.com/en_GB/i/btn/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" border="0" type="image"><img alt="" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Throwing Star LAN Tap Kit" type="hidden"><input name="amount" value="10.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="https://www.paypal.com/en_GB/i/btn/view_cart.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form-->
+      </td>
+    </tr>
+    <tr>
+      <td><a target="_blank" href="http://ossmann.blogspot.com/2011/02/throwing-star-lan-tap.html">Throwing Star LAN Tap PRO</a><br>
+      </td>
+      <td>Ethernet<br>
+      </td>
+      <td>RJ45<br>
+      </td>
+      <td><br>
+n/a<br>
+      </td>
+      <td><img style="width: 480px; height: 360px;" alt="lantap-pro" src="./RFIDIOt.org - RFID IO tools_files/tsltp.png"><br>
+      </td>
+<!--
+      <td>£24 + VAT<br>
+-->
+      <td>OUT OF STOCK<br>
+      </td>
+      <td>
+<!--
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="https://www.paypal.com/en_GB/i/btn/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" border="0" type="image"><img alt="" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Throwing Star LAN Tap PRO" type="hidden"><input name="amount" value="24.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="https://www.paypal.com/en_GB/i/btn/view_cart.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+-->
+      </td>
+    </tr>
+    <tr>
+      <td>Overseas Postage</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>£8<br>
+per item</td>
+      <td>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input src="./RFIDIOt.org - RFID IO tools_files/x-click-but22.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><img alt="" src="./RFIDIOt.org - RFID IO tools_files/pixel.gif" border="0" height="1" width="1"><input name="add" value="1" type="hidden"><input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="Overseas Postage" type="hidden"><input name="amount" value="8.00" type="hidden"><input name="no_shipping" value="2" type="hidden"><input name="no_note" value="1" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="lc" value="GB" type="hidden"><input name="bn" value="PP-ShopCartBF" type="hidden"><input name="tax" value="0.00" type="hidden"></form>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" value="_cart" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/view_cart.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"><input name="display" value="1" type="hidden"></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h2 style="text-align: center;"><a name="What_can_it_read"></a>What can
+it read or write?</h2>
+
+A London Transport <a href="http://en.wikipedia.org/wiki/Oyster_card">Oyster</a>
+card is based on a&nbsp;MIFARE® Standard card, so
+if you already have an Oyster card you have something you can play
+with. The sample program&nbsp;<span style="font-weight: bold;">bruteforce.py</span>
+can be run against it, and it
+will try to log in to sector 0 by choosing random numbers as the key.
+This is
+about as likely to work as winning the national lottery three times in
+a row, but what the hell? Odds like that don't stop people playing the
+national
+lottery three times in a row... If you "win" please let me know! :)<br>
+
+<br>
+
+See the 'Tag Gallery' section below for more detailed information on
+each of the devices I've seen so far.
+<br>
+
+<h2 style="text-align: center;"><a name="What_standards"></a>What
+standards does it support?</h2>
+
+The&nbsp;Dual ISO reader will read (and write) 13.56MHz devices
+with the
+following tags: <br>
+
+<br>
+
+&nbsp; MIFARE® Standard, MIFARE® 4k,
+MIFARE® Pro, MIFARE® Ultralight, MIFARE®
+DESFIRE, MIFARE® SmartMX<br>
+
+&nbsp; SLE 55Rxx, SLE 66CL160S, SLE 66CLX320P, SR176, SRIX4K<br>
+
+&nbsp; ISO14443A Tags<br>
+
+&nbsp; ISO14443B Tags<br>
+
+&nbsp; Jewel Tag (IRT0302B11 KSW DIY Eng. Sample)<br>
+
+&nbsp; Sharp B<br>
+
+&nbsp; ASK GTML2ISO<br>
+
+&nbsp; TOSMART P032/P064<br>
+
+<br>
+
+In addition to these, the Multi ISO will also handle ISO 15693, ISO
+18000-3, NFC enabled, ICODE standards, specifically:<br>
+
+<br>
+
+&nbsp; I-CODE SLI (SL2 ICS 20)<br>
+
+&nbsp; I-CODE EPC (SL2 ICS 10)<br>
+
+&nbsp; I-CODE UID (SL2 ICS 11)<br>
+
+&nbsp; I-CODE <br>
+
+&nbsp; NFC (Reader To Tag Mode)<br>
+
+&nbsp; SLE 55Rxx<br>
+
+&nbsp; SRF55VxxP+S<br>
+
+&nbsp; SLE 66CL160S<br>
+
+&nbsp; SLE 66CLX320P<br>
+
+&nbsp; SR176<br>
+
+&nbsp; SRIX4K<br>
+
+&nbsp; LRI 64<br>
+
+&nbsp; LRI 512<br>
+
+&nbsp; EM4135<br>
+
+&nbsp; KSW Temp Sens ®<br>
+
+&nbsp; Tag-it™ HF-I Standard<br>
+
+&nbsp; Tag-it™ HF-I Pro<br>
+
+&nbsp; ASK GTML<br>
+
+&nbsp; ASK GTML2ISO<br>
+
+<br>
+
+So far I have played with MIFARE® Standard (1K) and
+MIFARE® 4k
+and have obtained some MIFARE® DESFIRE cards but have not yet
+done
+anything with them.<br>
+
+<br>
+
+<br>
+
+The LFX will read/write 125kHz devices with the following tags:<br>
+
+<br>
+
+&nbsp; EM4x02<br>
+
+&nbsp; EM4x50<br>
+
+&nbsp;&nbsp;EM4x05 (ISO 11784/5 FDX-B)<br>
+
+&nbsp; Hitag1<br>
+
+&nbsp; Hitag2<br>
+
+&nbsp; HitagS<br>
+
+&nbsp; Q5<br>
+
+&nbsp; TI-RFID SYSTEMS 64 bit R/O &amp; R/W<br>
+
+&nbsp; TI-RFID SYSTEMS 1088 bit Multipage<br>
+
+<br>
+
+&nbsp; The Q5 and Hitag2 can be programmed to emulate 'Unique' /
+EM4x02 and FDX-B / EM4x05 standards.<br>
+
+&nbsp;<br>
+
+The Frosch will read/write:<br>
+
+<br>
+
+&nbsp; Hitag 1<br>
+
+&nbsp; Hitag 2<br>
+
+&nbsp; Hitag S<br>
+
+<br>
+
+&nbsp; The Hitag2 can be programmed to emulate 'Unique' / EM4x02
+and FDX-B / EM4x05 standards.
+<h2 style="text-align: center;"><a name="Where"></a>Download</h2>Code lives at <a href="https://github.com/AdamLaurie/RFIDIOt" target="_blank">https://github.com/AdamLaurie/RFIDIOt</a> and is always a work in progress!<br>
+
+<br>
+
+For the ACG or Frosch readers you'll need Chris Liechti's excellent <a target="_blank" href="http://pyserial.sourceforge.net/">pySerial</a>
+module, and for PC/SC support you'll also need <a target="_blank" href="http://sourceforge.net/project/showfiles.php?group_id=196342">pyscard</a>
+and <a target="_blank" href="http://pcsclite.alioth.debian.org/">PCSC-Lite</a>.<br>
+
+<br>
+
+If your python distro doesn't include Crypto, you'll need <a target="_blank" href="http://www.amk.ca/python/writing/pycrypt/">pycrypt</a>
+too, and, if not already included, you'll also need to install <a target="_blank" href="http://www.pythonware.com/products/pil/">Imaging</a>.<br>
+
+<br>
+
+If you want to extract the public keys from e-passports you'll need a
+local install of <a target="_blank" href="http://www.openssl.org/">OpenSSL</a>.<br>
+
+<h2 style="text-align: center;"><a name="licencing_terms"></a>Licensing</h2>
+
+The library is free for non-commercial use under the terms of the GPL
+(full terms in header of each module).
+For all other purposes please get in touch. My contact details are at
+the bottom of the page.
+<h2 style="text-align: center;"><a name="contribute"></a>Contribute</h2>
+
+If you'd like to contribute,
+please play with it and send me
+patches/comments/RFID
+devices/beer/money/loose women etc. You can mail me at: adam (at)
+algroup.co.uk, or you can make a paypal donation by clicking this
+button: &nbsp;
+<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post"><input name="cmd" value="_xclick" type="hidden"><input name="business" value="adam@algroup.co.uk" type="hidden"><input name="item_name" value="RFIDIOt development support" type="hidden"><input name="currency_code" value="GBP" type="hidden"><input name="amount" value="0.00" type="hidden"><input src="./RFIDIOt.org - RFID IO tools_files/btn_donate_LG.gif" name="submit" alt="Make payments with PayPal - it&#39;s fast, free and secure!" border="0" type="image"></form>
+
+<br>
+
+<h2 style="text-align: center;"><a name="Tag_Gallery"></a>Tag
+Gallery</h2>
+
+<a href="http://www.rfidiot.org/#The_EM4x05">EM 4x05</a><br>
+
+<a href="http://www.rfidiot.org/#VeriChip">VeriChip</a><br>
+
+<a href="http://www.rfidiot.org/#EM_4x50">EM 4x50</a><br>
+
+<a href="http://www.rfidiot.org/#KeyFob">EM 4x02</a><br>
+
+<a href="http://www.rfidiot.org/#Trovan">Trovan/Unique</a><br>
+
+<a href="http://www.rfidiot.org/#Q5">Q5</a><br>
+
+<a href="http://www.rfidiot.org/#Hitag2">Hitag2</a><br>
+
+<a href="http://www.rfidiot.org/#Guinness">Mifare 1K</a><br>
+
+<a href="http://www.rfidiot.org/#mifare_4k">Mifare 4K</a><br>
+
+<a href="http://www.rfidiot.org/#ultralight">Mifare Ultralight</a><br>
+
+<a href="http://www.rfidiot.org/#UKPassport">ISO 14443 (e-Passport)</a><br>
+
+<a href="http://www.rfidiot.org/#ISO_15693:">ISO 15693</a><br>
+
+<br>
+
+<a name="The_EM4x05"></a>The EM4x05 range implement
+the animal tagging standard <a href="http://en.wikipedia.org/wiki/ISO_11784_%26_11785">ISO-11784</a>&nbsp;'Radio-frequency
+identification of<br>
+
+animals - Code structure' and ISO-11785 'Radio-frequency identification
+of animals - Technical concept' (also known as FDX-B). &nbsp;These
+chips are ID-only
+transponders, operating at 134.2kHz and storing 128 bits of data, 64
+bits of which are the ID:<br>
+
+<br>
+
+&nbsp; Bit 1: &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp; 'Animal Flag' - Animal or Non-Animal application
+indicator<br>
+
+&nbsp; Bits 2 - 15: &nbsp; &nbsp; &nbsp;Reserved Field
+- RFU<br>
+
+&nbsp; Bit 16: &nbsp; &nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp;Data
+Block Flag - Indicates if more detailed data is also stored on this chip<br>
+
+&nbsp; Bits 17 - 26:&nbsp; &nbsp; Country Code - 3 digit
+country code as defined by <a href="http://en.wikipedia.org/wiki/ISO_3166">ISO-3166</a>,
+or manufacturer code by <a href="http://www.icar.org/pages/manufacturer_codes.htm">icar.org</a><br>
+
+&nbsp; Bits 27 - 64: &nbsp; &nbsp;National ID - Unique ID
+assigned by manufacturer / supplier<br>
+
+&nbsp;<br>
+
+Q5 or Hitag2 tags can be programmed to emulate an EM4x05 using
+the&nbsp;<span style="font-weight: bold;">fdxbnum.py</span>
+program, and the ID set to any value<span style="font-style: italic;">.<br>
+<br>
+<span style="font-weight: bold;">Security warning: if you
+have a
+security system, such as&nbsp;building access control, that relies
+solely on the ID of an EM4x05 type token, you may want to test that it
+cannot be fooled by a Q5 or Hitag2 programmed as a clone of a valid
+token.</span><br>
+</span>
+<br>
+
+<a name="VeriChip"></a>
+<span style="font-weight: bold;">The implantable </span><a style="font-weight: bold;" href="http://www.verichipcorp.com/">VeriChip</a><span style="font-weight: bold;"> appears to be an EM4x05:</span><br>
+
+<br>
+
+<img src="./RFIDIOt.org - RFID IO tools_files/verichip.gif" alt="VeriChip" height="106" width="116"><br>
+
+<br>
+
+It can be read with the <b>readlfx.py</b> command:<span style="font-family: monospace;"><br>
+<br>
+</span><big style="font-family: monospace;">
+</big><i>This one is a sample in a paperweight from
+VeriCorp. Note that the
+Application Identifier is out of spec according to ISO-11784 as it uses
+some reserved bits:</i><br>
+
+<pre> readlfx v0.1e (using RFIDIOt v0.1g)<br> reader: LFX 1.0 (serial no: 00000000)<br> Card ID: 0651A63EA66F0329<br> Tag type: EM 4x05 (ISO FDX-B)<br> Application Identifier: 94c0<br> Country Code: 985 (MANUF: Destron Fearing / Digital Angel Corporation)<br> National ID: 23561865824<br></pre>
+
+<i>This is <a href="http://commentisfree.guardian.co.uk/henry_porter/">Henry
+Porter</a>'s
+implant, which he had done for a <a href="http://www.channel4.com/more4/documentaries/doc-feature.jsp?id=107">TV
+Documentary</a>. Note that this time
+they've used a 4-digit country code instead of the standard 3 digits as
+specified by&nbsp;ISO-3166 and icar.org</i><a name="SkiPass"></a>:
+<pre> readlfx v0.1e (using RFIDIOt v0.1g)<br> reader: LFX 1.0 (serial no: 00000000)<br> Card ID: 77E5000001FF0001<br> Tag type: EM 4x05 (ISO FDX-B)<br> Application Identifier: 8000<br> Country Code: 1022 (UNREGISTERED MANUF: VeriChip Corporation)<br> National ID: 42990<br><span style="font-family: monospace;"></span></pre>
+
+<span style="font-family: monospace;"></span>
+<p><span style="font-weight: bold;"><a name="EM_4x50"></a>This is an EM
+4x50 based ski pass
+from Verbier, circa 1999: </span><br>
+<br>
+<a href="http://www.rfidiot.org/skipass-front.png"><img style="border: 2px solid ; width: 128px; height: 204px;" alt="Verbier Ski Pass Front" src="./RFIDIOt.org - RFID IO tools_files/skipass-front-thumb.png"></a><a href="http://www.rfidiot.org/skipass-back.png"><img style="border: 2px solid ; width: 128px; height: 208px;" alt="Verbier Skip Pass Back" src="./RFIDIOt.org - RFID IO tools_files/skipass-back-thumb.png"></a><br>
+<br>
+It can be read with the <span style="font-weight: bold;">readlfx.py</span>
+command:<br>
+<br>
+<span style="font-family: monospace;">&nbsp; readlfx
+v0.1 (using RFIDIOt v0.1b) </span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+reader: LFX 1.0 (serial no: 00000000)</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+Card ID: TDE2A3F00<br>
+<br>
+</span><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 01:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 02:&nbsp; 1A1F0000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 03:&nbsp; 00100100</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 04:&nbsp; 0022181A</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 05:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 06:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 07:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 08:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 09:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0a:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0b:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0c:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0d:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0e:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 0f:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 10:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 11:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 12:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 13:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 14:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 15:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 16:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 17:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 18:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 19:&nbsp; 00000000</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1a:&nbsp; 8022CABE</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1b:&nbsp; CCCC7C19</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1c:&nbsp; E3E77080</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1d:&nbsp; B1A65199</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1e:&nbsp; 8453AFB9</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 1f:&nbsp; E2876F65</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 20:&nbsp; DE2A3F00</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 21:&nbsp; 3210003B</span><big style="font-family: monospace;"><br>
+</big><span style="font-family: monospace;">&nbsp;
+&nbsp; sector 22:&nbsp; Read error: R</span><span style="font-style: italic;"></span><br>
+<br>
+<a name="KeyFob"></a><a style="font-weight: bold;" href="http://www.zygo.btinternet.co.uk/H4102_C.pdf">EM H4102</a><span style="font-weight: bold;">&nbsp;keyfob TAG:</span><br>
+<br>
+<span style="font-family: monospace;"><a href="http://www.rfidiot.org/idtag01.jpg"><img style="border: 2px solid ; width: 160px; height: 94px;" alt="Unknown ID Tag" src="./RFIDIOt.org - RFID IO tools_files/idtag01-thumb.jpg"></a><br>
+<br>
+</span>The ID can be read using <span style="font-weight: bold;">cardselect.py:<br>
+<br>
+</span>
+<span style="font-family: monospace;">&nbsp;
+cardselect v0.1a (using RFIDIOt v0.1b)</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp; reader:
+LFX 1.0 (serial no: 00000000)</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp; Card ID:
+U2008BCFAF8<br>
+</span></p>
+
+<p><a name="Trovan"></a>These are also sold by
+Trovan under the brand name '<a href="http://www.trovan.com/productsunitrans.htm">Unique</a>',
+and the ID can be decoded with <span style="font-weight: bold;">readlfx.py:</span></p>
+
+<p><span style="font-weight: bold;"><img style="width: 490px; height: 225px;" alt="trovan unique" src="./RFIDIOt.org - RFID IO tools_files/textflextrans450a.jpg"></span><br>
+</p>
+
+<pre> readlfx v0.1c (using RFIDIOt v0.1f)<br> reader: LFX 1.0 (serial no: 00000000)<br> Card ID: 2008BCFAF8<br> Tag type: EM 4x02<br> Unique ID: 04103d5f1f<br></pre>
+
+Trovan also provide these as a 'Human Implantable' chip.<br>
+
+<br>
+
+<img style="width: 490px; height: 146px;" alt="trovan implantable" src="./RFIDIOt.org - RFID IO tools_files/TEXTUNITRANS100IHA.jpg"><br>
+
+<br>
+
+At <a href="http://www.shmoocon.org/">shmoocon</a>
+in March 2007, I sucessfully cloned a human with a 'Unique' implant and
+was able to unlock his laptop (thanks <a href="http://www.pauldotcom.com/2007/03/29/major_malfunction_larry_pesce.html">Larry</a>).<br>
+
+<br>
+
+Q5 or Hitag2 tags can be programmed to emulate an EM4x02 using
+the&nbsp;<span style="font-weight: bold;">unique.py</span>
+program (in fact, that is the Q5 default mode), and the ID can be set
+to any&nbsp;value.<br>
+
+<br>
+
+<span style="font-style: italic;"><span style="font-weight: bold;">Security
+warning: if you have a security system, such as&nbsp;building
+access
+control, that relies solely on the ID of an EM4x02 type token, you may
+want to test that it cannot be fooled by a Q5 programmed as a
+clone of a valid token.<br>
+<br>
+</span></span><span style="font-weight: bold;"><a name="Q5"></a>Q5<br>
+<br>
+</span>The Q5 is a 'smart' tag, capable of emulating other
+standard
+tags, including the ID number. It does this by allowing specification
+of various parameters such
+as modulation, bit rate etc. By setting the right configuration and
+storing and transmitting the appropriate bit pattern, a reader
+will be fooled into thinking it's seen the corresponding tag type and
+specific UID. So
+far I have implemented emulation of&nbsp;<a href="http://www.rfidiot.org/#KeyFob">EM
+4x02</a> and&nbsp;&nbsp;<a href="http://www.rfidiot.org/#The_EM4x05">EM
+4x05</a> tags, using the&nbsp;<span style="font-weight: bold;">unique.py</span>
+and&nbsp;<span style="font-weight: bold;">fdxbnum.py</span>
+programs respectively.<br>
+
+<br>
+
+Once programmed, a Q5 tag can be reverted to it's default mode with
+the&nbsp;<span style="font-weight: bold;">q5reset.py</span>
+program (currently only supported on ACG hardware).<br>
+
+<br>
+
+They come in a huge variety of form factors, so it's quite likely
+you'll
+be able to find a blank that matches the tag you're trying to emulate:<br>
+
+<br>
+
+<img style="width: 172px; height: 103px;" alt="Q5 Clamshell" src="./RFIDIOt.org - RFID IO tools_files/Clamshell.jpg"><img style="width: 220px; height: 150px;" alt="Q5 injectable" src="./RFIDIOt.org - RFID IO tools_files/InjectorwithChipSmall.jpg"><img style="width: 220px; height: 165px;" alt="Q5 Laminate" src="./RFIDIOt.org - RFID IO tools_files/Laminates.jpg"><img style="width: 256px; height: 192px;" alt="Q5 nail" src="./RFIDIOt.org - RFID IO tools_files/NailTag.JPG"><img style="width: 300px; height: 225px;" alt="Q5 wristband" src="./RFIDIOt.org - RFID IO tools_files/Wristbands.jpg"><img style="width: 220px; height: 192px;" alt="q5 volcano" src="./RFIDIOt.org - RFID IO tools_files/volcano_tag.jpg"><img style="width: 115px; height: 115px;" alt="Q5 keyfob" src="./RFIDIOt.org - RFID IO tools_files/Proxim6.jpg" hspace="30"><img style="width: 172px; height: 71px;" alt="q5 glass" src="./RFIDIOt.org - RFID IO tools_files/glass-tag-q5-315x133mm.jpg"><br>
+
+<br style="font-weight: bold;">
+
+<span style="font-weight: bold;"><a name="Hitag2"></a>Hitag2</span><br>
+
+<br>
+
+The Hitag2 is very similar to the Q5 in that it comes in a variety of
+form factors, and can be programmed to emulate other tag
+types.&nbsp;So
+far I have implemented emulation of&nbsp;<a href="http://www.rfidiot.org/index.html#KeyFob">EM
+4x02</a> and&nbsp;&nbsp;<a href="http://www.rfidiot.org/index.html#The_EM4x05">EM
+4x05</a> tags, using the&nbsp;<span style="font-weight: bold;">unique.py</span>
+and&nbsp;<span style="font-weight: bold;">fdxbnum.py</span>
+programs respectively.<br>
+
+<br>
+
+Once programmed, a Hitag2 tag can be reverted to it's default mode with
+the <span style="font-weight: bold;">hitag2reset.py</span>
+program (currently only supported on Frosch hardware).<br>
+
+<br>
+
+<a href="http://www.rfidiot.org/Laguna-key.jpg"><img style="border: 0px solid ; width: 120px; height: 151px;" alt="Renault Laguna key" src="./RFIDIOt.org - RFID IO tools_files/Laguna-key-thumb.jpg"></a><br>
+
+<br>
+
+The Renault Laguna 'key' appears to be a Hitag2.<br>
+
+<br>
+
+<br>
+
+<span style="font-weight: bold;"></span><span style="font-style: italic;"><span style="font-weight: bold;">
+</span></span><a name="Guinness"></a><span style="font-weight: bold;">Mifare
+1K promotional
+card:</span><br>
+
+<br>
+
+<a href="http://www.rfidiot.org/guinness.png"><img style="border: 2px solid ; width: 228px; height: 145px;" alt="Guinness MIFARE 1K" src="./RFIDIOt.org - RFID IO tools_files/guinness-thumb.png"></a><br>
+
+<br>
+
+Contents can be read with <span style="font-weight: bold;">readmifare1k.py</span>:<br>
+
+<span style="font-style: italic;">(Note the login failure
+on sector 7 - this must be where they store confidential data)</span><br>
+
+<br>
+
+<span style="font-family: monospace;"></span><span style="font-family: monospace;">readmifare1k v0.1b (using
+RFIDIOt v0.1d)<br>
+reader: Dual 2.2 (serial no: 47050005)<br>
+Card ID: 1472F66F<br>
+<br>
+MIFARE data (keytype FF):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Serial
+number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1472F66F<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Check
+byte:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Manufacturer data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+88040047C11DB649003905<br>
+<br>
+&nbsp;sector 00: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 1472F66FFF88040047C11DB649003905
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 01: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 02: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 03: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 04: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 05: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 06: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 07: Keytype: FF Login failed<br>
+&nbsp;sector 08: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 09: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0a: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0b: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0c: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0d: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0e: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF078069FFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: 69<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+<br>
+&nbsp;sector 0f: Keytype: FF Login OK. Data:<br>
+<br>
+&nbsp; 00000000000000000000000000000000
+00000000000000000000000000000000 00000000000000000000000000000000
+000000000000FF0780BCFFFFFFFFFFFF<br>
+&nbsp; Access Block User Data Byte: BC<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key A (non-readable):&nbsp;&nbsp; 000000000000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Key
+B:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FFFFFFFFFFFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Access conditions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FF0780<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREC3:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock0AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock1AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock2AC: 000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read: KEYA/B, Write: KEYA/B, Increment: KEYA/B,
+Decrement/Transfer/Restore: KEYA/B (transport configuration)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MIFAREblock3AC: 001<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Write KeyA: KEYA, Read Access bits: KEYA, Write Access bits: KEYA, Read
+KeyB: KEYA, Write KeyB: KEYA (KEYB readable, transport configuration)<br>
+</span><br>
+
+<span style="font-weight: bold;"><a name="mifare_4k"></a>Mifare
+Standard 4K:</span><br>
+
+<span style="font-family: monospace;"></span><span style="font-family: monospace;"><br>
+</span><span style="font-family: monospace;"></span><a href="http://www.rfidiot.org/amsterdam-mifare-4k.png"><img style="border: 2px solid ; width: 200px; height: 242px;" alt="Amsterdam Mifare 4K" src="./RFIDIOt.org - RFID IO tools_files/amsterdam-mifare-4k-thumb.png"></a><br>
+
+<br>
+
+The Amsterdam rechargable public transport system 'ov-chipkaart' is a
+Mifare 4K. The sectors are locked so it cannot be read, but it can be
+identified with <span style="font-weight: bold;">isotype.py</span>:<br>
+
+<br>
+
+<pre>$ ./isotype.py -r2<br>isotype v0.1g (using RFIDIOt v0.1p)<br> Reader: PCSC OMNIKEY CardMan 5x21 00 01<br><br> ID: 8422539A<br> Tag is ISO 14443 A, part 3<br><br><br> ATR: 3B8F8001804F0CA0000003060300020000000069<br>      3B Initial Header<br>        8 No TA1, TB1, TC1 only TD1 is following<br>         F 15 bytes historical data follow<br>          8 No TA2, TB2, TC2 only TD2 is following<br>           0 T = 0<br>            0 No TA3, TB3, TC3, TD3 following<br>             1 T = 1<br>              Detected STORAGECARD<br>  Historical: 804F0CA00000030603000200000000<br>              80 Status indicator may be present (COMPACT-TLV object)<br>                4F Application Identifier presence indicator<br>                  0C 12 bytes follow<br>               RID: A000000306 PC/SC Workgroup<br>                         PIX: 03000200000000<br>                          SS: 03 ISO 14443 A, part 3<br>                          Name: 0002 Mifare Standard 4K<br>                               RFU: 00000000<br>                              Checksum TCK: 69 (OK)<br></pre>
+
+<span style="font-weight: bold;"><a name="ultralight"></a>Mifare
+Ultralight:<br>
+<br>
+<a href="http://www.rfidiot.org/amsterdam-ultralight.png"><img style="border: 2px solid ; width: 200px; height: 141px;" alt="Amsterdam Mifare Ultralight" src="./RFIDIOt.org - RFID IO tools_files/amsterdam-ultralight-thumb.png"></a><br>
+<br>
+</span>The Amsterdam disposable public transport 'ov-chipkaart'
+is a
+Mifare Ultralight. As the sectors are not locked, they can be read with
+<span style="font-weight: bold;">readtag.py:<br>
+<br>
+</span><span style="font-weight: bold;"></span>
+<pre>$ ./readtag.py <br>readtag v0.1b (using RFIDIOt v0.1p)<br> Reader: ACG MultiISO 1.0 (serial no: 34060217)<br><br>ID: 04A6B0D9D20280<br> Data:<br> Block 00: 04A6B09AD9D20280894800F000000000<br> Block 01: D9D20280894800F000000000FFFFFFFF<br> Block 02: 894800F000000000FFFFFFFF00000000<br> Block 03: 00000000FFFFFFFF0000000000000000<br> Block 04: FFFFFFFF000000000000000000000000<br> Block 05: 000000000000000000000000C8001002<br> Block 06: 0000000000000000C8001002077D2170<br> Block 07: 00000000C8001002077D21702034F309<br> Block 08: C8001002077D21702034F30959DA9EE8<br> Block 09: 077D21702034F30959DA9EE8256C0071<br> Block 0a: 2034F30959DA9EE8256C0071BF19390A<br> Block 0b: 59DA9EE8256C0071BF19390A88A049D6<br> Block 0c: 256C0071BF19390A88A049D613B8CD71<br> Block 0d: BF19390A88A049D613B8CD7104A6B09A<br> Block 0e: 88A049D613B8CD7104A6B09AD9D20280<br> Block 0f: 13B8CD7104A6B09AD9D20280894800F0<br><br></pre>
+
+Identifying it with <span style="font-weight: bold;">isotype.py</span>
+on a PC/SC reader shows some more information on the chip itself:<br>
+
+<br>
+
+<pre>$ ./isotype.py -r2<br>isotype v0.1g (using RFIDIOt v0.1p)<br> Reader: PCSC OMNIKEY CardMan 5x21 00 01<br><br> ID: 04A6B0D9D20280<br> Tag is ISO 14443 A, part 3<br><br><br> ATR: 3B8F8001804F0CA0000003060300030000000068<br>      3B Initial Header<br>        8 No TA1, TB1, TC1 only TD1 is following<br>         F 15 bytes historical data follow<br>          8 No TA2, TB2, TC2 only TD2 is following<br>           0 T = 0<br>            0 No TA3, TB3, TC3, TD3 following<br>             1 T = 1<br>              Detected STORAGECARD<br>  Historical: 804F0CA00000030603000300000000<br>              80 Status indicator may be present (COMPACT-TLV object)<br>                4F Application Identifier presence indicator<br>                  0C 12 bytes follow<br>               RID: A000000306 PC/SC Workgroup<br>                         PIX: 03000300000000<br>                          SS: 03 ISO 14443 A, part 3<br>                          Name: 0003 Mifare Ultra light<br> &nbsp;                             RFU: 00000000<br>                              Checksum TCK: 68 (OK)</pre>
+
+<span style="font-family: monospace;">
+<span style="font-weight: bold;"></span></span><a href="http://www.os3.nl/">Amsterdam University</a>
+used RFIDIOt to discover some security flaws in this system.<br>
+
+<br>
+
+<a style="font-weight: bold;" name="UKPassport"></a><span style="font-weight: bold;">ISO 14443 (type A) UK Passport:</span><br>
+
+<br>
+
+<a href="http://www.rfidiot.org/passport.jpg"><img style="border: 2px solid ; width: 125px; height: 177px;" alt="UK Passport Cover" src="./RFIDIOt.org - RFID IO tools_files/passport-thumb.jpg"></a><a href="http://www.rfidiot.org/passport-chip-full.png"><img style="border: 2px solid ; width: 151px; height: 107px;" alt="UK Passport Chip" src="./RFIDIOt.org - RFID IO tools_files/passport-chip-full-thumb.png"></a><br>
+
+<br>
+
+The ID can be read with <span style="font-weight: bold;">cardselect.py,
+</span>but it returns a different number every time (I ran a
+slightly modified version that does multiple selects):<br>
+
+<br>
+
+<span style="font-family: monospace;">cardselect v0.1b
+(using RFIDIOt v0.1d)</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">reader: Dual 2.2
+(serial no: 47050005)</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0814252A</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0852FB48</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0813F98C</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0894B632</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 08735DEB</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 083D756E</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 08AA9CC0</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 08571F6C</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0850AAC2</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0807D5F8<br>
+</span><br>
+
+This means the tag is generating it's ID on the fly, which would be a
+very useful feature for, errr... security auditing tags... :)<br>
+
+<br>
+
+The leading '08' of the ID indicates a random UID as per ISO-14443 part
+3 (thanks to Henryk Plötz for pointing this out), and the rest
+of
+the digits&nbsp;are a
+pseudo-random sequence - if you'd like to have a go at working it out,
+here are <a href="http://www.rfidiot.org/passport-select.tgz">dumps</a> of
+three sessions
+containing a total of 19,658 select operations. Note that although they
+were all taken within a few minutes of each other, there were a number
+of individual select commands issued between each session. The passport
+was kindly provided by the <a href="http://www.no2id.net/">No2ID</a>
+campaign.
+<a href="http://www.rfidiot.org/passport-108xxxxxx.zip">This file</a>
+contains 1,558,261 contiguous
+select operations from a different passport, serial number starting
+'108'.&nbsp;
+<p>I have also been working on the code to implement the PKI for <a href="http://www2.icao.int/en/MRTD/Downloads/Forms/AllItems.aspx">ICAO
+9303</a>, which will
+allow logging-in to the chips:
+</p>
+
+<pre>$ ./mrpkey.py TEST<br>mrpkey v0.1 (using RFIDIOt v0.1e)<br>reader: Dual 2.2 (serial no: 47050005)<br><br>Test MRZ: L898902C&lt;3UTO6908061F9406236ZE184226B&lt;&lt;&lt;&lt;&lt;14<br>Passport number: L898902C&lt;<br>Check digit: 3<br>Nationality: UTO<br>Date Of Birth: 690806<br>Check Digit: 1<br>Sex: F<br>Expiry: 940623<br>Check Digit: 6<br>Optional: ZE184226B&lt;&lt;&lt;&lt;&lt;<br>Check Digit: 1<br>Composite Check Digit: 4<br><br>Generate local keys:<br><br>Key MRZ Info (kmrz): L898902C&lt;369080619406236<br>Kseed (SHA1 hash digest of kmrz): 239ab9cb282daf66231dc5a4df6bfbae<br><br>KENCa (encryption key A digest): ab94fdecf2674fdf<br>KENCb (encryption key B digest): b9b391f85d7f76f2<br><br>KMACa (Message Authentication Code A digest): 7962d9ece03d1acd<br>KMACb (Message Authentication Code B digest): 4c76089dce131543<br><br>Generate local random Challenge (rnd_ifd): 781723860C06C226<br>Generate local random Challenge (Kifd): 0B795240CB7049B01C19B33E32804F0B<br><br>S: 781723860c06c2264608f919887022120b795240cb7049b01c19b33e32804f0b<br>Kenc: ab94fdecf2674fdfb9b391f85d7f76f2<br>Eifd: 72c29c2371cc9bdb65b779b8e8d37b29ecc154aa56a8799fae2f498f76ed92f2<br>Kmac: 7962d9ece03d1acd4c76089dce131543<br>Mifd: 5f1448eea8ad90a7<br>cmd_data: 72c29c2371cc9bdb65b779b8e8d37b29ecc154aa56a8799fae2f498f76ed92f25f1448eea8ad90a7<br><br>Auth Response: 46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F2F2D235D074D7449<br>Auth message: 46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F<br>Auth MAC: 2F2D235D074D7449<br></pre>
+
+In this case I've specified 'TEST' as the MRZ data, in which case the <b>mrpkey.py</b>
+program uses
+the worked-up example from the ICAO 9303 standard<span style="text-decoration: underline;"></span>.
+Specifying genuine MRZ data will attempt authentication to a real
+passport (which has succeeded on every passport I've tried so far):
+<pre>mrpkey v0.1c (using RFIDIOt v0.1g)<br>reader: Dual 2.2 (serial no: 47050005)<br><br>Passport number: 108nnnnnn<br>Check Digit: 6<br>Nationality: GBR<br>Date Of Birth: 90nnnn<br>Check Digit: 2<br>Sex: M<br>Expiry: 160810<br>Check Digit: 4<br>Optional: &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>Check Digit: 0<br>Composite Check Digit: 8<br><br>Generate local keys:<br><br>Key MRZ Info (kmrz): 108nnnnnnn90nnnn21608104<br><br>Select Passport Application (AID): OK<br>Select Master File: Basic Access Control enforced!<br>Generate local random Challenge (rnd_ifd): 4c05dcf71bcc0510<br>Generate local random Challenge (Kifd): e2ae78e4d5752cc1535c3567c77f7a2c<br><br>Authenticating: OK<br><br>Generate session keys:<br><br>Kifd XOR Kicc (kseed): 8923c07565483c2ef21a0935d62ca1d3<br>Session Key ENC: 166b0404b5da98fde6970162efab26d3<br>Session Key MAC: 0457834034c4f798451a07abb3235249<br><br>Calculate Send Sequence Counter:<br><br>SSC: 7ccd4bba1bcc0510<br>60145f01<br>File Length: 22<br>Reading: 00000<br>EF.COM: Length: 20<br>Tag: 5f01 (LDS Version)<br> Length: 4<br> Data: 30313037<br>Tag: 5f36 (Unicode Version)<br> Length: 6<br> Data: 303430303030<br>Tag: 5c (Tag List)<br> Length: 2<br> Data Group: 61 (EF.DG1 Data Recorded in MRZ)<br> Data Group: 75 (EF.DG2 Encoded Identification Features - FACE)<br>EF.COM stored in /tmp/EF_COM.BIN<br><br>Select EF.SOD: File Length: 1929<br>Reading: 00000<br>EF.SOD stored in /tmp/EF_SOD.BIN<br><br>Select DG1:<br>615b5f1f<br>File Length: 93<br>Reading: 00000<br>EF.DG1 stored in /tmp/EF_DG1.BIN<br>EF.DG1: Data Length: 88<br> Decoded Data: P&lt;GBRLAURIE&lt;&lt;xxxxxxxxxx&lt;xxxxxxxxx&lt;xxxxx&lt;&lt;&lt;&lt;&lt;108nnnnnnnGBR90nnnn2M1608104&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;08<br> Document code: P&lt;<br> Issuing State or organisation: GBR<br> Name: LAURIE&lt;&lt;xxxxxxxxxx&lt;xxxxxxxxx&lt;xxxxx&lt;&lt;&lt;&lt;&lt;<br> Passport Number: 108nnnnnn<br> Check Digit: 6<br> Nationality: GBR<br> Date of Birth: 90nnnn<br> Check Digit: 2<br> Sex: M<br> Date of Expiry: 160810<br> Check Digit: 4<br> Personal Number or other optional elements: &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br> Check Digit: 0<br> Composite Check Digit: 8<br><br>Select DG2:<br>File Length: 20028<br>Reading: 00000<br>EF.DG2: JPEG image stored in /tmp/EF_DG2.JPG<br>EF.DG2 stored in /tmp/EF_DG2.BIN<br></pre>
+
+Note that I have obscured some of the data to respect the passport
+owner's privacy.<br>
+
+<br>
+
+The latest version produces prettier output:<br>
+
+<br>
+
+<a href="http://www.rfidiot.org/phil.png"><img style="border: 2px solid ; width: 168px; height: 105px;" alt="Phil Booth passport" src="./RFIDIOt.org - RFID IO tools_files/phil-thumb.png"></a><br>
+
+<br>
+
+<a href="http://www.no2id.net/">Phil Booth of No2ID</a>
+kindly gave his permission for his data to be reproduced here.<br>
+
+<br>
+
+I must express my gratitude to Marc Witteman of <a href="http://www.riscure.com/">Riscure</a> for his
+invaluable help in interpreting the standards, particularly for
+pointing out the hidden gems in <a href="http://www2.icao.int/en/MRTD/Downloads/Supplements%20to%20Doc%209303/Supplement_to_ICAO_Doc_9303_-_Release_6.pdf">here</a>.<br>
+
+<br>
+
+<span style="font-family: monospace;"></span>
+<h2 style="text-align: center;"><a name="certificates"></a>Passport
+Certificates</h2>
+
+<br>
+
+I have started compiling a collection of digital certificates stored on
+passports and am always pleased to receive ones I haven't already got,
+so please email me yours if it's not already&nbsp;<a href="http://www.rfidiot.org/certificates.html">here</a>.<br>
+
+<br>
+
+The ICAO Public Key Directory (PKD) can be found <a href="https://pkddownloadsg.icao.int/" target="_blank">here</a>.<br>
+
+<h2 style="text-align: center;"><a name="Passport_profiling"></a>Passport
+profiling</h2>
+
+<span style="font-weight: bold;">Australian</span>
+passports are interesting in that they have a couple of unusual
+features which could combine to make them unique.<br>
+
+<br>
+
+They break ISO-14443 by not honouring the first two bytes of the random
+ID field, which should be '08':<br>
+
+<br>
+
+<span style="font-family: monospace;">multiselect v0.1a
+(using RFIDIOt v0.1g)</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">reader: Dual 2.2
+(serial no: 47050005)</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 3F14252A</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 1A52FB48</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: E713F98C</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 2B94B632</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 77735DEB</span><br style="font-family: monospace;">
+
+<span style="font-family: monospace;">Card ID: 0B3D756E</span><span style="font-family: monospace;"></span>
+<p>Also, although they do implement Basic Access Control, it is
+done by
+giving a return value of 69 82 - 'Security status not satisfied' when
+EF.COM is read, rather than when it is first selected. This is not a
+major issue, and is actually compliant according to the ICAO 9303
+Supplement section S1.0-20041220-LDS0028, but it does mean that the
+contents of the passport could be iterated prior to authentication, in
+as much as it could be determined which files (but not their contents)
+were stored on the chip based on the return value being equal to a
+successful select or file not found.&nbsp;</p>
+
+<p>These two features could potentially be combined to profile
+the
+passport and determine that it was probably an Australian issue without
+any other prior knowledge.</p>
+
+<p>More worryingly, the <span style="font-weight: bold;">Italian</span>
+passport does not use random
+UIDs, so
+the passport is not only identifiable as Italian, but individuals can
+be discriminated once their UID is known.</p>
+
+<p><span style="font-weight: bold;">American</span>
+passports are interesting as they are the only ones that I've seen so
+far that have <a href="http://deviating.net/stuff/passport.avi">shielding</a>
+in them (thanks to <a href="http://deviating.net/">deviant</a>
+for the video). They also fail to honour the random ID bytes, and store
+two extra data elements - DG11 and DG12: ' Additional Personal
+Detail(s)' .</p>
+
+<p>I am currently having difficulty reading <span style="font-weight: bold;">French</span> and <span style="font-weight: bold;">Irish</span> passports, but
+<span style="font-weight: bold;">Norwegian</span>
+and <span style="font-weight: bold;">German</span>
+worked just fine, although the <span style="font-weight: bold;">German</span>
+passport uses a different image format (JP2).</p>
+
+<p><a name="ISO_15693:"></a><span style="font-weight: bold;">ISO 15693:<br>
+<br>
+Texas Instrument:<br>
+<br>
+<a href="http://www.rfidiot.org/hotel-key.png"><img style="border: 2px solid ; width: 200px; height: 255px;" alt="ISO 15693 Hotel Key" src="./RFIDIOt.org - RFID IO tools_files/hotel-key-thumb.png"></a><br>
+<br>
+</span>This hotel key is made by Texas Instrument:<span style="font-weight: bold;"><br>
+</span><span style="font-weight: bold;"></span>
+</p>
+
+<pre>$ ./isotype.py <br>isotype v0.1g (using RFIDIOt v0.1p)<br> Reader: ACG MultiISO 1.0 (serial no: 34060217)<br><br> ID: E0078151C9B41427<br> Tag is ISO 15693 <br> Manufacturer: Texas Instrument<br></pre>
+
+<span style="font-weight: bold;">
+</span>The standard doesn't specify what block size the device is
+-
+that's left up to the manufacturer. In this case, the 4 byte data
+blocks can be read with <span style="font-weight: bold;">readtag.py</span>:<br>
+
+<br>
+
+<pre>$ ./readtag.py <br>readtag v0.1b (using RFIDIOt v0.1p)<br> Reader: ACG MultiISO 1.0 (serial no: 34060217)<br><br>ID: E0078151C9B41427<br> Data:<br> Block 00: 00000000<br> Block 01: 00000000<br> Block 02: 00000000<br> Block 03: 242738B0<br> Block 04: 096C2A48<br> Block 05: 00005091<br> Block 06: 8F4113B2<br> Block 07: 21764613<br> Block 08: 000074E9<br> Block 09: 00000000<br> Block 0a: 00000000<br> Block 0b: 00000000<br> Block 0c: 00000000<br> Block 0d: 00000000<br> Block 0e: 00000000<br> Block 0f: 00000000<br> Block 10: 00000000<br> Block 11: 00000000<br> Block 12: 00000000<br> Block 13: 00000000<br> Block 14: 00000000<br> Block 15: 00000000<br> Block 16: 00000000<br> Block 17: 00000000<br> Block 18: 00000000<br> Block 19: 00000000<br> Block 1a: 00000000<br> Block 1b: 00000000<br> Block 1c: 00000000<br> Block 1d: 00000000<br> Block 1e: 00000000<br> Block 1f: 00000000<br> Block 20: 00000000<br> Block 21: 00000000<br> Block 22: 00000000<br> Block 23: 00000000<br> Block 24: 00000000<br> Block 25: 00000000<br> Block 26: 00000000<br> Block 27: 00000000<br> Block 28: 00000000<br> Block 29: 00000000<br> Block 2a: 00000000<br> Block 2b: 00000000<br> Block 2c: 00000000<br> Block 2d: 00000000<br> Block 2e: 00000000<br> Block 2f: 00000000<br> Block 30: 00000000<br> Block 31: 00000000<br> Block 32: 00000000<br> Block 33: 00000000<br> Block 34: 00000000<br> Block 35: 00000000<br> Block 36: 00000000<br> Block 37: 00000000<br> Block 38: 00000000<br> Block 39: 00000000<br> Block 3a: 00000000<br> Block 3b: 00000000<br> Block 3c: 00000000<br> Block 3d: 00000000<br> Block 3e: 00000000<br> Block 3f: 00000000<br><br></pre>
+
+<span style="font-weight: bold;">EM Microelectronic-Marin
+SA:</span><br>
+
+<br>
+
+<br>
+
+<span style="font-family: monospace;"><a href="http://www.rfidiot.org/skidubai.png"><img style="border: 2px solid ; width: 200px; height: 259px;" alt="Ski Dubai" src="./RFIDIOt.org - RFID IO tools_files/skidubai-thumb.png"></a><br>
+<br>
+</span>This ski pass is made by EM Microelectronic-Marin SA (the
+'chip' in the top right of the lower image is just printed on):<br>
+
+<br>
+
+<pre>$ ./isotype.py <br>isotype v0.1g (using RFIDIOt v0.1p)<br> Reader: ACG MultiISO 1.0 (serial no: 34060217)<br><br> ID: E01694021602D1E8<br> Tag is ISO 15693 <br> Manufacturer: EM Microelectronic-Marin SA<br><br></pre>
+
+and has 8 byte blocks:<br>
+
+<br>
+
+<pre>$ ./readtag.py <br>readtag v0.1b (using RFIDIOt v0.1p)<br> Reader: ACG MultiISO 1.0 (serial no: 34060217)<br><br>ID: E01694021602D1E8<br> Data:<br> Block 00: 6D40F80000000000<br> Block 01: FFF0782201E87822<br> Block 02: 00000083000000B3<br> Block 03: 000000E300000000<br> Block 04: 0000000000000000<br> Block 05: 0000000000000000<br> Block 06: 0000000000000000<br> Block 07: 0000000000000000<br> Block 08: 0000000000000000<br> Block 09: 0000000000000000<br> Block 0a: 0000000000000000<br> Block 0b: 0000000000000000<br> Block 0c: 0000000000000000<br> Block 0d: 0000000000000000<br> Block 0e: 0000000000000000<br> Block 0f: 0000000000000000<br> Block 10: 0000000000000000<br> Block 11: 0000000000000000<br> Block 12: 0000000000000000<br> Block 13: 0000000000000000<br> Block 14: 0000000000000000<br> Block 15: 0000000000000000<br> Block 16: 0000000000000000<br> Block 17: 0000000000000000<br> Block 18: 0000000000000000<br> Block 19: 0000000000000000<br> Block 1a: 0000000000000000<br> Block 1b: 0000000000000000<br> Block 1c: 0000000000000000<br> Block 1d: 0000000000000000<br> Block 1e: 0000000000000000<br> Block 1f: 0000000000000000<br> Block 20: 0000000000000000<br> Block 21: 0000000000000000<br> Block 22: 0000000000000000<br> Block 23: 0000000000000000<br> Block 24: 0000000000000000</pre>
+
+<h2 style="text-align: center;"><a name="Technical_Note"></a>Technical
+Notes</h2>
+
+<h2>pcmcia drivers</h2>
+
+When I started this project I was running Ubuntu 5.10 and the ACG
+readers just
+plugged in and worked (actually, for some strange reason you had to
+plug them in,
+unplug them, and then re-plug them on my Panasonic CF-72 before it
+noticed them). However, I recently upgraded to 6.06 LTS and
+everything stopped working. After much research I found out what was
+wrong, so here
+it is, blow by blow, in case you have the same problem.
+<p><br>
+<i>Driver does not load (i.e. /dev/ttyS1 does not get mapped).
+'dmesg' shows the following (on a Dell Latitude):</i>
+</p>
+
+<pre>[17212461.436000] pccard: PCMCIA card inserted into slot 0<br>[17212461.436000] cs: memory probe 0xef600000-0xfbffffff: excluding 0xef600000-0xfa7fffff<br>[17212461.440000] pcmcia: registering new device pcmcia0.0<br></pre>
+
+<i>On the Panasonic I also get this in dmesg:</i>
+<pre>[17212460.764000] cs: pcmcia_socket0: unable to apply power.<br></pre>
+
+<i>investigation (on the Dell) with pccardctl reveals (note you
+must be root or you will get misleading results):</i>
+<pre># pccardctl info<br>PRODID_1="ACG AT"<br>PRODID_2="ACG RF PC Handheld Reader"<br>PRODID_3="1.1"<br>PRODID_4="4705000570 "<br>MANFID=015d,4c45<br>FUNCID=2<br>PRODID_1="O2Micro"<br>PRODID_2="SmartCardBus Reader"<br>PRODID_3="V1.0"<br>PRODID_4=""<br>MANFID=ffff,0001<br>FUNCID=255<br># pccardctl status<br>Socket 0:<br> no card<br>Socket 1:<br> 5.0V 16-bit PC Card<br> Subdevice 0 (function 0) [unbound]<br></pre>
+
+<i>and on the Panasonic:</i>
+<pre># pccardctl info<br>PRODID_1="ACG AT"<br>PRODID_2="ACG RF PC Handheld Reader"<br>PRODID_3="1.1"<br>PRODID_4="4705000570 "<br>MANFID=015d,4c45<br>FUNCID=2<br>PRODID_1=""<br>PRODID_2=""<br>PRODID_3=""<br>PRODID_4=""<br>MANFID=0000,0000<br>FUNCID=255<br># pccardctl status<br>Socket 0:<br> no card<br>Socket 1:<br> no card<br></pre>
+
+<i>Issuing the following command gets the card to fire up:</i>
+<pre># pccardctl insert<br></pre>
+
+<i>At this point on the Panasonic my keyboard stopped working,
+presumably due to some driver conflict (but mouse etc. were fine, if a
+little slow), so I gave up and worked only on the Dell:</i>
+<pre># pccardctl status<br>Socket 0:<br> 5.0V 16-bit PC Card<br> Subdevice 0 (function 0) bound to driver "snd-pdaudiocf"<br>Socket 1:<br> 5.0V 16-bit PC Card<br> Subdevice 0 (function 0) [unbound]<br></pre>
+
+<i>So we now have a functioning card, but bound to the wrong
+driver.
+Unplugging the card, removing the offending driver and replugging sorts
+that out:</i>
+<pre># rmmod snd-pdaudiocf<br># pccardctl status<br>Socket 0:<br> 5.0V 16-bit PC Card<br> Subdevice 0 (function 0) bound to driver "serial_cs"<br>Socket 1:<br> 5.0V 16-bit PC Card<br> Subdevice 0 (function 0) [unbound]<br></pre>
+
+<i>And we are back in business! :)<br>
+<br>
+</i>
+<h2>USB drivers</h2>
+
+<i>
+</i>ACG USB devices use an FTDI serial converter, &nbsp;so
+the ftdi_sio
+driver must be loaded. Linux kernel versions 2.6.17 and upwards will
+correctly detect the device and automatically load the driver, but for
+previous versions you will need to load it manually:<br>
+
+<pre># modprobe ftdi_sio vendor=0x0403 product=0xdd20<br></pre>
+
+If you are running Doze or Mac OS X, you may need to install the FTDI
+Virtual COM Port drivers, which be found <a href="http://www.ftdichip.com/Drivers/VCP.htm">here.</a><br>
+
+Under OS X, the virtual devices will be called '/dev/tty.usbserial-*'.<br>
+
+<br>
+
+<h2>JCOP Tools</h2>
+
+If you are playing with Java cards and developing under Linux, then,
+like me, you are probably&nbsp;having a nightmare trying to find
+the
+JCOPtools plugin for Eclipse... The Windows version is relatively easy
+to find, but will not install under linux. Actually, the code is the
+same, it's just the way it's been packaged that stops it installing. To
+fix this, do the following:<br>
+
+<br>
+
+<pre>$ cd JCOPtools/features <br>$ jar xvfz com.ibm.bluez.jcop.eclipse_3.1.2.jar<br>$ vi feature.xml<br>(remove the lines that say: os="win32" - there should be 2 of them)<br>$ jar cvMf com.ibm.bluez.jcop.eclipse_3.1.2.jar f* license.html<br><br></pre>
+
+You have now repackaged the tools to allow installation on any
+platform. Exit Eclipse, go back in and try the install again. You will
+need to uncheck the "Ignore features not suitable for this platform"
+box before it will see any installable features (if someone figures out
+how to make this work without unchecking the box please let me know and
+I'll update these instructions).
+<h2 style="text-align: center;"><a name="RFID_Blocking"></a>RFID
+Blocking</h2>
+
+The paranoid amongst you may want to do something about carrying these
+things around, and since I was sent some of these <a href="http://www.shareasale.com/r.cfm?B=68227&amp;U=190362&amp;M=11244">DIFRwear
+passport holders and wallets</a>
+to test, and they seem to work, I thought I'd share... I tried both
+125kHz and 13.56MHz tags with the ACG reader, and a more powerful
+pet-id system, and they blocked them both completely.<br>
+
+<br>
+
+<a href="http://www.shareasale.com/r.cfm?B=68227&amp;U=190362&amp;M=11244"><img style="border: 2px solid ; width: 125px; height: 126px;" alt="rfid shielded passport holder" src="./RFIDIOt.org - RFID IO tools_files/passport_closed.jpg"></a>
+&nbsp;<a href="http://www.shareasale.com/r.cfm?B=68227&amp;U=190362&amp;M=11244"><img style="border: 2px solid ; width: 125px; height: 94px;" alt="rfid shielded wallets" src="./RFIDIOt.org - RFID IO tools_files/wallets_400.jpg"></a><br>
+
+<br>
+
+If you click on the above images or link and then purchase anything, I
+will, in theory, receive a small commission. However, this does not
+mean I support or endorse these products in any way other than to
+accept their payment for what would otherwise be free advertising in
+return for making a statement of what I believe to be fact. If you
+object to this, then you can go direct to their site (difrwear.com) and
+buy your wallets free from the curse of having renumerated me.<br>
+
+<br>
+
+I've also been sent some samples of the <a href="http://www.idstronghold.com/products.php?s=2&amp;b=2">Secure
+Passport Sleeve</a> and <a href="http://www.idstronghold.com/securesleeve.php?s=2">Secure
+Sleeve</a> envelope style protecters from <a href="http://www.idstronghold.com/">ID Stronghold</a>.
+They appear to be made of a Tyvek material, with some kind of metal
+coating on the inside. I tested them with a UK passport and an Oyster
+card, which both operate at 13.56MHz, and they blocked them completely.
+However, my pet-id reader was able to read an FDX-B tag operating at
+125kHz through the envelope, and the ACG LFX was still able to read my
+ski-pass, which is also a 125kHz device.<br>
+
+<br>
+
+<img style="width: 220px; height: 166px;" alt="secure id sleeve" src="./RFIDIOt.org - RFID IO tools_files/Secure_Card_Sleeve.jpg"><img style="width: 220px; height: 166px;" alt="secure id passport sleeve" src="./RFIDIOt.org - RFID IO tools_files/Secure_Passport_Sleeve.jpg"><br>
+
+<br>
+
+You can, of course, simply make your own... It seems the tin-foil-hat
+brigade were right all along: wrapping your passport in a sheet of
+cooking foil does the job nicely! :)<br>
+
+<br>
+
+<h2 style="text-align: center;"><a name="news"></a>In
+The News</h2>
+
+November 2006:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.guardian.co.uk/idcards/story/0,,1950226,00.html">The
+Guardian - UK Passport Crack</a></li>
+  <li><a target="_blank" href="http://www.iiss.org/conferences/recent-key-addresses/david-cameron-address">Citation
+in David Cameron's (leader of the UK Government Opposition Party) anti
+ID Cards speech</a></li>
+  <li><a target="_blank" href="http://www.rfidiot.org/%3E%20%0A%3E%20Ian%0A%3E%20%0A%3E%20%0A%3E%20Patrick%20Green%20wrote:%0A%3E%3E%20Hey%20Ian,%0A%3E%3E%20Hows%20things?%20Quick%20couple%20of%20questions%20-%20Adam%20Laurie%20was%20in%20a%20%0A%3E%3E%20programme%20on%20UK%20tv%20recently%20-%20about%20the%20possibilities%20of%20government%20%0A%3E%3E%20spying%20and%20things%20like%20that.%20In%20it%20he%20tapped%20the%20reporter.%0A%3E%3E%0A%3E%3E%20Can%20you%20remember%20the%20name%20of%20the%20programme/channel?%20And%20is%20it%20likely%20%0A%3E%3E%20there%20is%20a%20digital%20version%20available?%20I%27m%20in%20the%20US%20and%20some%20of%20my%20%0A%3E%3E%20colleagues%20would%20be%20interested%20in%20seeing%20it.%0A%3E%3E%0A%3E%3E%20Hope%20you%20are%20well,%0A%3E%3E%0A%3E%3E%20Pat%0A%3E%3E%20--%20%0A%3E%3E%20Patrick%20Green%0A%3E%3E%20dbCERT%0A%3E%3E%0A%3E%3E%20Deutsche%20Bank%20AG%20London%20%20Work:%20+44%280%2920-754-72394%206%20Bishopsgate,%20%0A%3E%3E%20London%20EC2N%204DA%0A%3E%3E%0A%3E%3E%20---%0A%3E%3E%0A%3E%3E%20This%20e-mail%20may%20contain%20confidential%20and/or%20privileged%20information.%20If%20%0A%3E%3E%20you%20are%20not%20the%20intended%20recipient%20%28or%20have%20received%20this%20e-mail%20in%20%0A%3E%3E%20error%29%20please%20notify%20the%20sender%20immediately%20and%20destroy%20this%20e-mail.%20%0A%3E%3E%20Any%20unauthorized%20copying,%20disclosure%20or%20distribution%20of%20the%20material%20%0A%3E%3E%20in%20this%20e-mail%20is%20strictly%20forbidden.%0A%3E%3E%0A%3E%3E%20%20%20%0A%3E%20%0A%0A%0A%3E%20%0A%3E%20Ian%0A%3E%20%0A%3E%20%0A%3E%20Patrick%20Green%20wrote:%0A%3E%3E%20Hey%20Ian,%0A%3E%3E%20Hows%20things?%20Quick%20couple%20of%20questions%20-%20Adam%20Laurie%20was%20in%20a%20%0A%3E%3E%20programme%20on%20UK%20tv%20recently%20-%20about%20the%20possibilities%20of%20government%20%0A%3E%3E%20spying%20and%20things%20like%20that.%20In%20it%20he%20tapped%20the%20reporter.%0A%3E%3E%0A%3E%3E%20Can%20you%20remember%20the%20name%20of%20the%20programme/channel?%20And%20is%20it%20likely%20%0A%3E%3E%20there%20is%20a%20digital%20version%20available?%20I%27m%20in%20the%20US%20and%20some%20of%20my%20%0A%3E%3E%20colleagues%20would%20be%20interested%20in%20seeing%20it.%0A%3E%3E%0A%3E%3E%20Hope%20you%20are%20well,%0A%3E%3E%0A%3E%3E%20Pat%0A%3E%3E%20--%20%0A%3E%3E%20Patrick%20Green%0A%3E%3E%20dbCERT%0A%3E%3E%0A%3E%3E%20Deutsche%20Bank%20AG%20London%20%20Work:%20+44%280%2920-754-72394%206%20Bishopsgate,%20%0A%3E%3E%20London%20EC2N%204DA%0A%3E%3E%0A%3E%3E%20---%0A%3E%3E%0A%3E%3E%20This%20e-mail%20may%20contain%20confidential%20and/or%20privileged%20information.%20If%20%0A%3E%3E%20you%20are%20not%20the%20intended%20recipient%20%28or%20have%20received%20this%20e-mail%20in%20%0A%3E%3E%20error%29%20please%20notify%20the%20sender%20immediately%20and%20destroy%20this%20e-mail.%20%0A%3E%3E%20Any%20unauthorized%20copying,%20disclosure%20or%20distribution%20of%20the%20material%20%0A%3E%3E%20in%20this%20e-mail%20is%20strictly%20forbidden.%0A%3E%3E%0A%3E%3E%20%20%20%0A%3E%20%0Ahttp://video.google.com/videoplay?docid=-4839556520925774502&amp;q=%22suspect+nation%22">"Suspect
+Nation" - More4 Documentary</a></li>
+</ul>
+
+December 2006:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.abc.net.au/am/content/2006/s1807053.htm">ABC
+Radio - Australian Passports</a></li>
+  <li><a target="_blank" href="http://www.smh.com.au/news/security/passport-hacker-warns-of-identity-risk/2006/12/12/1165685661999.html">The
+Sydney Morning Herald</a></li>
+</ul>
+
+January 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.parliament.uk/documents/upload/st2Laurie.pdf">House
+of Lords Select Committee - Written Evidence</a></li>
+  <li><a target="_blank" href="http://www.publications.parliament.uk/pa/ld/lduncorr/s&amp;tii170107.pdf">House
+of Lords Select Committee - Oral Evidence</a></li>
+</ul>
+
+March 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.dailymail.co.uk/pages/live/articles/news/news.html?in_article_id=440069&amp;in_page_id=1770">The
+Daily Mail - UK Passports in transit</a></li>
+  <li><a target="_blank" href="http://www.theregister.com/2007/03/06/daily_mail_passport_clone/">The
+Register</a></li>
+  <li><a target="_blank" href="http://www.techworld.com/security/news/index.cfm?newsid=8185">TechWorld</a></li>
+  <li><a target="_blank" href="http://www.pcworld.com/article/id,129625-c,establishedtechnologystandards/article.html">PC
+World</a></li>
+  <li><a target="_blank" href="http://computerworld.com/action/article.do?command=viewArticleBasic&amp;taxonomyName=privacy&amp;articleId=9012406&amp;taxonomyId=84">ComputerWorld</a></li>
+  <li><a target="_blank" href="http://it.slashdot.org/article.pl?sid=07/03/07/1817243">Slashdot</a></li>
+</ul>
+
+<br>
+
+April 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.darkreading.com/document.asp?doc_id=121419&amp;WT.svl=news1_4">Dark
+Reading</a></li>
+  <li><a target="_blank" href="http://media.libsyn.com/media/sploitcast/sploitcast_020.mp3">sploitcast.com
+podcast #20</a></li>
+</ul>
+
+<br>
+
+June 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.dice.ucl.ac.be/crypto/passport/index.html">Belgian
+Passports</a></li>
+  <li><a target="_blank" href="http://www.issa.e-symposium.com/etr/archive.php">ISSA
+Online Symposium- "Emerging Threats &amp; Responses"</a>
+(login required)</li>
+  <li><a target="_blank" href="http://www.itproportal.com/podcasts/adamlaurie.mp3">FIRST
+Seville conference podcast</a> (safe cracking video is <a href="http://www.youtube.com/watch?v=cPcmZ7zIqfo">here</a>).</li>
+</ul>
+
+<br>
+
+July 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.os3.nl/">Amsterdam
+University students use RFIDIOt to break subway system</a>
+(demonstration video is <a href="https://www.os3.nl/_media/2007-2008/rfid.mpg">here</a>).</li>
+  <li><a target="_blank" href="http://www.rfidiot.org/analysis.ram">BBC
+World Service -
+Analysis - Digital Identities</a></li>
+</ul>
+
+<br>
+
+August 2007:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.darkreading.com/tv/tv_popup.asp?doc_id=131897">Dark
+Reading Black Hat interview (video).</a></li>
+</ul>
+
+February 2008:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.news.com/8301-10789_3-9875961-57.html?tag=cd.blog">CNET
+news: The hands-free way to steal a credit card</a></li>
+  <li><a target="_blank" href="http://www.eweek.com/c/a/Security/Researcher-Hacks-Into-Credit-Card-Magnetic-Strips/">eWEEK
+- Secuity Researcher Hacks into Credit Card Magnetic Strips</a></li>
+</ul>
+
+April 2008:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://derstandard.at/?url=/?id=3313625">Austrian
+Newspaper - Der Standard - article on Biometric Passports</a></li>
+</ul>
+
+August 2008:<br>
+
+<ul>
+
+  <li><a target="_blank" href="http://www.timesonline.co.uk/tol/news/uk/crime/article4467106.ece">The
+Times
+Newspaper - 'Fakeproof' e-passport is cloned in minutes</a></li>
+</ul>
+
+September 2008:<br>
+
+<ul>
+
+  <li><a href="http://www.sciam.com/article.cfm?id=how-rfid-tags-could-be-used" target="_blank">Scientific American - How RFID Tags Could Be
+Used to Track Unsuspecting People</a></li>
+  <li><a href="http://www.guardian.co.uk/technology/2008/sep/11/6" target="_blank">The Guardian - Should we take cheap-as-chips
+RFID on trust?</a></li>
+  <li><a href="http://voices.washingtonpost.com/securityfix/2008/09/tool_lets_users_change_their_p.html?hpid=sec-tech" target="_blank">Washington Post - Software Lets Users
+Manipulate Passport Data</a></li>
+  <li><a href="http://www.theregister.co.uk/2008/09/30/epassport_hack_description/" target="_blank">The Register - Elvis has left the border:
+ePassport faking guide unleashed</a></li>
+</ul>
+
+<br>
+
+October 2008:<br>
+
+<ul>
+
+  <li><a href="http://www.pcworld.com/businesscenter/article/151734/epassport_demo_shows_weaknesses_in_new_border_controls.html" target="_blank">PC World - E-passport Demo Shows Weaknesses
+in New Border Controls</a></li>
+</ul>
+
+August 2009:<br>
+
+<ul>
+
+  <li><a href="http://www.wired.com/threatlevel/2009/08/fed-rfid/" target="_blank">Feds at DefCon Alarmed After RFIDs Scanned</a></li>
+  <li><a href="http://www.dailymail.co.uk/news/article-1204641/New-ID-cards-supposed-unforgeable--took-expert-12-minutes-clone-programme-false-data.html" target="_blank">New ID cards are supposed to be 'unforgeable' - but it
+took our expert 12 minutes to clone one, and programme it with false
+data</a></li>
+  <li><a href="http://www.computerweekly.com/Articles/2009/08/07/237247/id-card-cannot-be-hacked-uk-government-claims-encryption-secrets.htm">ID
+card cannot be hacked, UK Government claims - encryption secrets
+revealed</a></li>
+  <li><a href="http://www.computerweekly.com/Articles/2009/08/19/237378/home-office-unlikely-to-accept-id-card-cloners-offer-of.htm" target="_blank">Home Office unlikely to accept ID card cloner's offer
+of demonstration</a></li>
+</ul>
+
+December 2009:<br>
+
+<ul>
+
+  <li><a href="http://www.af.mil/news/video/index.asp?cid=3&amp;sid=10291" target="_blank">USAF Seminar at RAF Mildenhall</a></li>
+</ul>
+
+February 2010:<br>
+
+<ul>
+
+  <li><a href="http://edition.cnn.com/2010/TECH/02/19/passport.security/">CNN
+Faking passports</a></li>
+</ul>
+
+April 2010:<br>
+
+<ul>
+
+  <li><a href="http://web.archive.org/web/20100407224758/http://www.ottawacitizen.com/entertainment/Canada+planned+electronic+passports+easy+hack+expert+warns/2761190/story.html" target="_blank">Canada’s planned electronic passports easy to hack</a>
+(please note that the Elvis stunt was actually performed by <a href="http://www.dexlab.nl/epassports.html">Jeroen van Beek</a>).<br>
+  </li>
+</ul>
+
+<h2 style="text-align: center;"><a name="Who"></a>Who
+are you anyway?&nbsp;</h2>
+
+My name is Adam Laurie, and I'm a Director of <a href="http://aperturelabs.com/" target="_blank">Aperture Labs Ltd.</a>,
+a security research and consultancy company. I also
+help maintain <a href="http://www.apache-ssl.org/">Apache-SSL</a>.
+You can reach me at: adam (at) algroup.co.uk<br>
+
+<br>
+
+<font style="font-style: italic;" size="-1">Copyright
+(c) 2006-2017 Adam Laurie. Page last updated Wednesday, 25th October, 2017.<br>
+Custom <a href="http://research.swtch.com/qr/draw">QR Code</a> by Russ Cox
+</font>
+
+</body></html>
